@@ -5,6 +5,7 @@ import com.android.build.gradle.api.ApplicationVariant
  */
 
 plugins {
+    id("com.github.dcendents.android-maven")
     id("com.android.application")
     id("checkstyle")
     kotlin("android")
