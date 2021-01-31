@@ -122,14 +122,14 @@ android {
 
 }
 
-var swigcmd = "swig"
+//var swigcmd = "swig"
 // Workaround for Mac OS X since it otherwise does not find swig and I cannot get
 // the Exec task to respect the PATH environment :(
-if (File("/usr/local/bin/swig").exists())
-    swigcmd = "/usr/local/bin/swig"
+//if (File("/usr/local/bin/swig").exists())
+  //  swigcmd = "/usr/local/bin/swig"
 
 
-fun registerGenTask(variantName: String, variantDirName: String): File {
+/*fun registerGenTask(variantName: String, variantDirName: String): File {
     val baseDir = File(buildDir, "generated/source/ovpn3swig/${variantDirName}")
     val genDir = File(baseDir, "net/openvpn/ovpn3")
 
@@ -146,14 +146,14 @@ fun registerGenTask(variantName: String, variantDirName: String): File {
 
     }
     return baseDir
-}
+}*/
 
 android.applicationVariants.all(object : Action<ApplicationVariant> {
     override fun execute(variant: ApplicationVariant) {
-        val sourceDir = registerGenTask(variant.name, variant.baseName.replace("-", "/"))
-        val task = tasks.named("generateOpenVPN3Swig${variant.name}").get()
-
-        variant.registerJavaGeneratingTask(task, sourceDir)
+     //   val sourceDir = registerGenTask(variant.name, variant.baseName.replace("-", "/"))
+     //   val task = tasks.named("generateOpenVPN3Swig${variant.name}").get()
+//
+       // variant.registerJavaGeneratingTask(task, sourceDir)
     }
 })
 
