@@ -1,5 +1,4 @@
 import com.android.build.gradle.api.ApplicationVariant
-
 /*
  * Copyright (c) 2012-2016 Arne Schwabe
  * Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
@@ -10,6 +9,7 @@ plugins {
     id("checkstyle")
     kotlin("android")
     kotlin("android.extensions")
+
 }
 
 android {
@@ -33,11 +33,11 @@ android {
 
 
 
-    externalNativeBuild {
-        cmake {
-            setPath(File("${projectDir}/src/main/cpp/CMakeLists.txt"))
-        }
-    }
+  //  externalNativeBuild {
+     //   cmake {
+     //       setPath(File("${projectDir}/src/main/cpp/CMakeLists.txt"))
+     //   }
+   // }
 
     sourceSets {
         getByName("main") {
