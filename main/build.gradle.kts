@@ -6,7 +6,7 @@ import com.android.build.gradle.api.ApplicationVariant
 
 plugins {
     id("com.github.dcendents.android-maven")
-    id("com.android.application")
+    id("com.android.library")
     id("checkstyle")
     kotlin("android")
     kotlin("android.extensions")
@@ -149,14 +149,14 @@ android {
     return baseDir
 }*/
 
-android.applicationVariants.all(object : Action<ApplicationVariant> {
+/*android.applicationVariants.all(object : Action<ApplicationVariant> {
     override fun execute(variant: ApplicationVariant) {
      //   val sourceDir = registerGenTask(variant.name, variant.baseName.replace("-", "/"))
      //   val task = tasks.named("generateOpenVPN3Swig${variant.name}").get()
 //
        // variant.registerJavaGeneratingTask(task, sourceDir)
     }
-})
+})*/
 
 
 dependencies {
