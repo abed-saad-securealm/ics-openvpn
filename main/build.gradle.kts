@@ -5,8 +5,8 @@ import com.android.build.gradle.api.ApplicationVariant
  */
 
 plugins {
-    id("com.github.dcendents.android-maven")
     id("com.android.library")
+    id("com.github.dcendents.android-maven")
     id("checkstyle")
     kotlin("android")
     kotlin("android.extensions")
@@ -20,7 +20,6 @@ android {
         minSdkVersion(14)
         targetSdkVersion(30)  //'Q'.toInt()
         versionCode = 175
-        versionName = "0.7.21"
 
         externalNativeBuild {
             cmake {
@@ -45,35 +44,6 @@ android {
             assets.srcDirs("src/main/assets", "build/ovpnassets")
 
         }
-
-        create("ui") {
-        }
-
-        create("skeleton") {
-        }
-
-        getByName("debug") {
-        }
-
-        getByName("release") {
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            // ~/.gradle/gradle.properties
-            val keystoreFile: String? by project
-            storeFile = keystoreFile?.let { file(it) }
-            val keystorePassword: String? by project
-            storePassword = keystorePassword
-            val keystoreAliasPassword: String? by project
-            keyPassword = keystoreAliasPassword
-            val keystoreAlias: String? by project
-            keyAlias = keystoreAlias
-            isV1SigningEnabled = true
-            isV2SigningEnabled = true
-        }
-
     }
 
     lintOptions {
@@ -82,42 +52,9 @@ android {
         disable("MissingTranslation", "UnsafeNativeCodeLocation")
     }
 
-    buildTypes {
-        getByName("release") {
-            if (project.hasProperty("icsopenvpnDebugSign")) {
-                logger.warn("property icsopenvpnDebugSign set, using debug signing for release")
-                signingConfig = android.signingConfigs.getByName("debug")
-            } else {
-                signingConfig = signingConfigs.getByName("release")
-            }
-        }
-    }
-
-    flavorDimensions("implementation")
-
-    productFlavors {
-        create("ui") {
-            setDimension("implementation")
-            buildConfigField("boolean", "openvpn3", "true")
-        }
-        create("skeleton") {
-            setDimension("implementation")
-            buildConfigField("boolean", "openvpn3", "false")
-        }
-    }
-
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_1_8
         sourceCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    splits {
-        abi {
-            isEnable = true
-            reset()
-            include("x86", "x86_64", "armeabi-v7a", "arm64-v8a")
-            isUniversalApk = true
-        }
     }
 
 
@@ -170,23 +107,6 @@ dependencies {
 
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.core:core:$coreVersion")
-
-    // Is there a nicer way to do this?
-    dependencies.add("uiImplementation", "androidx.constraintlayout:constraintlayout:1.1.3")
-    dependencies.add("uiImplementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    dependencies.add("uiImplementation", "androidx.cardview:cardview:1.0.0")
-    dependencies.add("uiImplementation", "androidx.recyclerview:recyclerview:1.0.0")
-    dependencies.add("uiImplementation", "androidx.appcompat:appcompat:1.1.0")
-    dependencies.add("uiImplementation", "com.github.PhilJay:MPAndroidChart:v3.1.0")
-    dependencies.add("uiImplementation", "com.squareup.okhttp3:okhttp:3.2.0")
-    dependencies.add("uiImplementation", "androidx.core:core:$coreVersion")
-    dependencies.add("uiImplementation", "androidx.core:core-ktx:$coreVersion")
-    dependencies.add("uiImplementation", "org.jetbrains.anko:anko-commons:0.10.4")
-    dependencies.add("uiImplementation", "androidx.fragment:fragment-ktx:$fragment_version")
-    dependencies.add("uiImplementation", "androidx.preference:preference:$preferenceVersion")
-    dependencies.add("uiImplementation", "androidx.preference:preference-ktx:$preferenceVersion")
-    dependencies.add("uiImplementation", "com.google.android.material:material:$materialVersion")
-    dependencies.add("uiImplementation", "androidx.webkit:webkit:1.2.0")
 
     testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
     testImplementation("junit:junit:4.13")
