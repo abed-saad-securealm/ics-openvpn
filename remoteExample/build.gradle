@@ -3,7 +3,7 @@
  * Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
  */
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 
 android {
