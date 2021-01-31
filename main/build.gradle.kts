@@ -5,7 +5,6 @@ import com.android.build.gradle.api.ApplicationVariant
  */
 
 plugins {
-    id("org.jetbrains.kotlin.android")
     id("com.android.application")
     id("checkstyle")
     kotlin("android")
