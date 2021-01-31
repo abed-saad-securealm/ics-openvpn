@@ -108,6 +108,23 @@ dependencies {
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.core:core:$coreVersion")
 
+    // Is there a nicer way to do this?
+    implementation( "androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation( "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation( "androidx.cardview:cardview:1.0.0")
+    implementation( "androidx.recyclerview:recyclerview:1.0.0")
+    implementation( "androidx.appcompat:appcompat:1.1.0")
+    implementation( "com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation( "com.squareup.okhttp3:okhttp:3.2.0")
+    implementation( "androidx.core:core:$coreVersion")
+    implementation( "androidx.core:core-ktx:$coreVersion")
+    implementation( "org.jetbrains.anko:anko-commons:0.10.4")
+    implementation( "androidx.fragment:fragment-ktx:$fragment_version")
+    implementation( "androidx.preference:preference:$preferenceVersion")
+    implementation( "androidx.preference:preference-ktx:$preferenceVersion")
+    implementation( "com.google.android.material:material:$materialVersion")
+    implementation( "androidx.webkit:webkit:1.2.0")
+
     testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
     testImplementation("junit:junit:4.13")
     testImplementation("org.mockito:mockito-core:3.3.3")

@@ -4,5 +4,3 @@
  */
 rootProject.buildFileName = "build.gradle.kts"
 include(":main")
-include(":tlsexternalcertprovider")
-include(":remoteExample")
